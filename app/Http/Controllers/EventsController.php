@@ -19,7 +19,4 @@ class EventsController extends Controller
 
 	}
 
-	public function EventsBook(){
-		return "You Sucessfully Booked!"; // make it show user name
-	}
 }
