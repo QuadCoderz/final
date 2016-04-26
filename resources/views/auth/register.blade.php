@@ -14,7 +14,9 @@
                             <label class="col-md-4 control-label">Name</label>
 
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="name" value="{{ old('name') }}">
+
+                                <input type="text" required="required" class="form-control" name="name" value="{{ old('name') }}">
+
 
                                 @if ($errors->has('name'))
                                     <span class="help-block">
@@ -24,11 +26,27 @@
                             </div>
                         </div>
 
+
+                        <div class="form-group{{ $errors->has('mobile') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">Mobile No.</label>
+
+                            <div class="col-md-6">
+                                <input type="text" pattern="[0-9]*" required="required" class="form-control" name="mobile" value="{{ old('mobile') }}">
+
+                                @if ($errors->has('mobile'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('mobile') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">E-Mail Address</label>
 
                             <div class="col-md-6">
-                                <input type="email" class="form-control" name="email" value="{{ old('email') }}">
+
+                                <input type="email" required="required" class="form-control" name="email" value="{{ old('email') }}">
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
@@ -42,7 +60,8 @@
                             <label class="col-md-4 control-label">Password</label>
 
                             <div class="col-md-6">
-                                <input type="password" class="form-control" name="password">
+
+                                <input type="password" required="required" class="form-control" name="password">
 
                                 @if ($errors->has('password'))
                                     <span class="help-block">
@@ -56,7 +75,9 @@
                             <label class="col-md-4 control-label">Confirm Password</label>
 
                             <div class="col-md-6">
-                                <input type="password" class="form-control" name="password_confirmation">
+
+                                <input type="password" required="required" class="form-control" name="password_confirmation">
+
 
                                 @if ($errors->has('password_confirmation'))
                                     <span class="help-block">

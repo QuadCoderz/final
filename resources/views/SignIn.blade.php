@@ -60,6 +60,7 @@
     	}
     </script>
     
+<<<<<<< HEAD
 
     
     
@@ -129,8 +130,6 @@
             </li>
             @endif
             
-
-
           </ul>
           
         </nav>
@@ -157,57 +156,57 @@
                 <label class="col-md-4 control-label">E-Mail Address</label>
 
                 <div class="col-md-6">
-                  <input type="email" class="form-control" name="email" value="{{ old('email') }}">
+                  <input type="email" required="required" class="form-control" name="email" value="{{ old('email') }}">
 
-                  @if ($errors->has('email'))
-                  <span class="help-block">
-                    <strong>{{ $errors->first('email') }}</strong>
-                  </span>
-                  @endif
-                </div>
-              </div>
 
-              <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                <label class="col-md-4 control-label">Password</label>
+                                @if ($errors->has('email'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
 
-                <div class="col-md-6">
-                  <input type="password" class="form-control" name="password">
+                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">Password</label>
 
-                  @if ($errors->has('password'))
-                  <span class="help-block">
-                    <strong>{{ $errors->first('password') }}</strong>
-                  </span>
-                  @endif
-                </div>
-              </div>
+                            <div class="col-md-6">
 
-              <div class="form-group">
-                <div class="col-md-6 col-md-offset-4">
-                  <div class="checkbox">
-                    <label>
-                      <input type="checkbox" name="remember"> Remember Me
-                    </label>
+                                <input type="password" required="required" class="form-control" name="password">
+
+                                @if ($errors->has('password'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="remember"> Remember Me
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fa fa-btn fa-sign-in"></i>Login
+                                </button>
+
+                                <a class="btn btn-link" href="{{ url('/password/reset') }}">Forgot Your Password?</a>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
                   </div>
                 </div>
               </div>
-
-              <div class="form-group">
-                <div class="col-md-6 col-md-offset-4">
-                  <button type="submit" class="btn btn-primary">
-                    <i class="fa fa-btn fa-sign-in"></i>Login
-                  </button>
-
-                  <a class="btn btn-link" href="{{ url('/password/reset') }}">Forgot Your Password?</a>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
+            </div>
 
 
   <script type="text/javascript">
@@ -247,6 +246,7 @@
     $('html, body').stop().animate({
      scrollTop: $($anchor.attr('href')).offset().top - 91co
    }, 1500,'easeInOutExpo');
+
 			/*
 			if you don't want to use the easing effects:
 			$('html, body').stop().animate({
@@ -255,6 +255,7 @@
 			*/
 			event.preventDefault();
 		});
+
  })
 </script> 
 
@@ -270,6 +271,7 @@
 
 
     $container.isotope({
+
     // disable window resizing
     resizable: true,
     masonry: {
@@ -277,7 +279,9 @@
     }
   });
 
+
     $(window).smartresize(function(){
+
     // check if columns has changed
     var currentColumns = Math.floor( ( $body.width() -30 ) / colW );
     if ( currentColumns !== columns ) {
@@ -285,6 +289,7 @@
       columns = currentColumns;
       // apply width to container manually, then trigger relayout
       $container.width( columns * colW )
+
       .isotope('reLayout');
     }
 
@@ -304,9 +309,6 @@
   });
 
 </script>
-
-
-
 
 <script type="text/javascript">
 

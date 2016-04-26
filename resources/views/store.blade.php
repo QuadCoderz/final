@@ -3,7 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, maximum-scale=1">
+
   <title>Our Store</title>
+
   <link rel="icon" href="favicon.png" type="image/png">
   <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
   <link href="css/style.css" rel="stylesheet" type="text/css">
@@ -64,14 +66,17 @@
   <body>
 
     <!--Header_section-->
+
     <header id="header_outer" class="fadeInUp">
       <div class="container">
         <div class="header_section fadeInUp">
+
           <div class="logo"><a href="javascript:void(0)"><img src="img/logob.png" alt=""></a></div>
           <nav class="nav" id="nav">
             <ul class="toggle">
               <li><a href="/home">Home</a></li>
               <li><a href="/home#About_Us">About Us</a></li>
+
               <li><a href="{{ url('/RoomReservation') }}">Reservation</a></li>
               <li><a href="{{ url('/Store') }}">Store</a></li>
               <li><a href="/home#Membership">Membership</a></li>
@@ -92,10 +97,13 @@
                 </ul>
               </li>
               @endif
+
+ 
             </ul>
             <ul class="">
               <li><a href="/home">Home</a></li>
               <li><a href="/home#About_Us">About Us</a></li>
+
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                   Services <span class="caret"></span>
@@ -129,6 +137,8 @@
 
 
             </ul>
+
+
 
           </nav>
           <a class="res-nav_click animated wobble wow"  href="javascript:void(0)"><i class="fa-bars"></i></a> 
@@ -192,7 +202,6 @@
         
         
         <div class="row">
-
           <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 text-center" >
             <img class="img-responsive img-border img-full" src="img/newar1.jpg" alt="">
           </div>
@@ -386,16 +395,20 @@
 
   <script type="text/javascript">
 
+
     $(window).load(function(){
 
 
       var $container = $('.portfolioContainer'),
+
       $body = $('body'),
       colW = 350,
       columns = null;
 
 
+
       $container.isotope({
+
     // disable window resizing
     resizable: true,
     masonry: {
@@ -403,7 +416,9 @@
     }
   });
 
+
       $(window).smartresize(function(){
+
     // check if columns has changed
     var currentColumns = Math.floor( ( $body.width() -30 ) / colW );
     if ( currentColumns !== columns ) {
@@ -411,6 +426,7 @@
       columns = currentColumns;
       // apply width to container manually, then trigger relayout
       $container.width( columns * colW )
+
       .isotope('reLayout');
     }
     
@@ -435,6 +451,7 @@
 
 
     jQuery(document).ready(function($){     
+
 // Portfolio Isotope
 var container = $('#portfolio-wrap');   
 
@@ -503,10 +520,12 @@ $(window).bind('resize', function () {
 });
 
 });
+
     $( window ).load(function() {
       jQuery('#all').click();
       return false;
     });
   </script>
+
 </body>
 </html>

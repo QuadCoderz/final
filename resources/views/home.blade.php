@@ -3,12 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, maximum-scale=1">
+
   @if (Auth::guest())
   <title>Creative</title>
   @else
   <title>Home</title>
   @endif
   
+
   <link rel="icon" href="favicon.png" type="image/png">
   <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
   <link href="css/style.css" rel="stylesheet" type="text/css">
@@ -16,7 +18,9 @@
   <link href="css/font-awesome.css" rel="stylesheet" type="text/css">
   <link href="css/responsive.css" rel="stylesheet" type="text/css">
   <link href="css/animate.css" rel="stylesheet" type="text/css">
+
   <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
 
   <link href='http://fonts.googleapis.com/css?family=Lato:400,900,700,700italic,400italic,300italic,300,100italic,100,900italic' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Dosis:400,500,700,800,600,300,200' rel='stylesheet' type='text/css'>
@@ -70,6 +74,7 @@
  <body>
 
   <!--Header_section-->
+
   <header id="header_outer" class="fadeInUp">
     <div class="container">
       <div class="header_section fadeInUp">
@@ -135,7 +140,8 @@
 
 
           </ul>
-          
+
+
         </nav>
         <a class="res-nav_click animated wobble wow"  href="javascript:void(0)"><i class="fa-bars"></i></a> 
 
@@ -224,22 +230,28 @@
         <div class="row">
           <div class="col-lg-4">
             <div class="service_block">
+
               <div class="service_icon delay-03s animated wow  zoomIn"> <span><i class="fa-book"></i></span> </div>
               <h3 class="animated fadeInUp wow">Study</h3>
+
               <p class="animated fadeInDown wow">Proin iaculis purus consequat sem cure digni. Donec porttitora entum suscipit  aenean rhoncus posuere odio in tincidunt.</p>
             </div>
           </div>
           <div class="col-lg-4">
             <div class="service_block">
+
               <div class="service_icon icon3  delay-03s animated wow zoomIn"> <span><i class="fa-wifi"></i></span> </div>
               <h3 class="animated fadeInUp wow">Wifi</h3>
+
               <p class="animated fadeInDown wow">Proin iaculis purus consequat sem cure digni. Donec porttitora entum suscipit  aenean rhoncus posuere odio in tincidunt.</p>
             </div>
           </div>
           <div class="col-lg-4">
             <div class="service_block">
+
               <div class="service_icon icon2  delay-03s animated wow zoomIn"> <span><i class="fa-paint-brush"></i></span> </div>
               <h3 class="animated fadeInUp wow">Paint</h3>
+
               <p class="animated fadeInDown wow">Proin iaculis purus consequat sem cure digni. Donec porttitora entum suscipit  aenean rhoncus posuere odio in tincidunt.</p>
             </div>
           </div>
@@ -270,7 +282,9 @@
               <li>Feature N0 4</li>
             </ul>
 
+
             <a href="/SignIn" class="btn btn-price">Subscribe Now</a>
+
 
           </div>
         </div>
@@ -287,6 +301,7 @@
               <li>Feature N0 3</li>
               <li>Feature N0 4</li>
             </ul>
+
 
             <a href="/SignIn" class="btn btn-price">Subscribe Now</a>
 
@@ -308,6 +323,7 @@
 
             <a href="/SignIn" class="btn btn-price">Subscribe Now</a>
 
+
           </div>
         </div>
 
@@ -324,7 +340,9 @@
               <li>Feature N0 4</li>
             </ul>
 
+
             <a href="/SignIn"  class="btn btn-price">Subscribe Now</a>
+
 
           </div>
         </div>
@@ -335,7 +353,9 @@
             <div class="dropdown ">
               <p>Contact us if you have special request</p>
               <a href="#" class=" btn btn-blue  dropdown-toggle"type="button" data-toggle="dropdown">Customize your own <span class="caret"></span></a>
+
               <ul class="dropdown-menu col-md-4 " style="margin-top: 10px; position: absolute; float: none;">
+
                 <form>
                   <div>
                     <label><input type="checkbox" /> feature 1</label>
@@ -350,7 +370,9 @@
 
                   </div>
                   <div>
+
                     <a href="/SignIn" type="button" class="btn btn-primary" style="margin-top: 10px;">Submit</a>
+
                   </div>
                 </form>
               </ul>
@@ -358,7 +380,9 @@
             </div>
 
           </div>
+
         </div>
+
                   <!--  <div class="dropdown col-md-offset-5 col-md-3">
                                 <a class="btn  btn-blue dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
                                 <span class="caret"></span></a>
@@ -403,7 +427,9 @@
                               <div style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;" class="portfolio-item one-four   videography isotope-item">
                                 <div class="portfolio-image"> <img src="img/19.jpg"  alt="Portfolio 1"> </div>
                                 <a title="Event 1" rel="prettyPhoto[galname]" 
-                                href="/Events" target="_blank">
+
+                                href="/Events/1" target="_blank">
+
                                 <div class="project-overlay">
                                   <div class="project-info">
                                     <div class="zoom-icon"></div>
@@ -417,8 +443,10 @@
                               <!-- Portfolio Item Video Expander  -->
                               <div style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;" class="portfolio-item one-four   videography isotope-item">
                                 <div class="portfolio-image"> <img src="img/41 5alas.jpg"  alt="Portfolio 1"> </div>
-                                <a title="Event 1" rel="prettyPhoto[galname]" 
-                                href="/Events" target="_blank">
+
+                                <a title="Event 2" rel="prettyPhoto[galname]"
+                                href="/Events/2" target="_blank">
+
                                 <div class="project-overlay">
                                   <div class="project-info">
                                     <div class="zoom-icon"></div>
@@ -432,8 +460,10 @@
                               <!-- Portfolio Item Normal Expander -->
                               <div style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;" class="portfolio-item one-four   videography isotope-item">
                                 <div class="portfolio-image"> <img src="img/19.jpg"  alt="Portfolio 1"> </div>
-                                <a title="Event 1" rel="prettyPhoto[galname]" 
-                                href="/Events" target="_blank">
+
+                                <a title="Event 3" rel="prettyPhoto[galname]"
+                                href="/Events/3" target="_blank">
+
                                 <div class="project-overlay">
                                   <div class="project-info">
                                     <div class="zoom-icon"></div>
@@ -447,8 +477,10 @@
                               <!-- Portfolio Item FullScreen Expander -->
                               <div style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;" class="portfolio-item one-four   videography isotope-item">
                                 <div class="portfolio-image"> <img src="img/19.jpg"  alt="Portfolio 1"> </div>
-                                <a title="Event 1" rel="prettyPhoto[galname]" 
-                                href="/Events" target="_blank">
+
+                                <a title="Event 4" rel="prettyPhoto[galname]"
+                                href="/Events/4" target="_blank">
+
                                 <div class="project-overlay">
                                   <div class="project-info">
                                     <div class="zoom-icon"></div>
@@ -462,8 +494,10 @@
                               <!-- Portfolio Item FullScreen Expander -->
                               <div style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;" class="portfolio-item one-four   videography isotope-item">
                                 <div class="portfolio-image"> <img src="img/19.jpg"  alt="Portfolio 1"> </div>
-                                <a title="Event 1" rel="prettyPhoto[galname]" 
-                                href="/Events" target="_blank">
+
+                                <a title="Event 5" rel="prettyPhoto[galname]"
+                                href="/Events/5" target="_blank">
+
                                 <div class="project-overlay">
                                   <div class="project-info">
                                     <div class="zoom-icon"></div>
@@ -477,8 +511,10 @@
                               <!-- Portfolio Item Normal Expander -->
                               <div style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;" class="portfolio-item one-four   videography isotope-item">
                                 <div class="portfolio-image"> <img src="img/19.jpg"  alt="Portfolio 1"> </div>
-                                <a title="Event 1" rel="prettyPhoto[galname]" 
-                                href="/Events" target="_blank">
+
+                                <a title="Event 6" rel="prettyPhoto[galname]"
+                                href="/Events/6" target="_blank">
+
                                 <div class="project-overlay">
                                   <div class="project-info">
                                     <div class="zoom-icon"></div>
@@ -492,8 +528,10 @@
                               <!-- Portfolio Item External Project  -->
                               <div style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;" class="portfolio-item one-four   videography isotope-item">
                                 <div class="portfolio-image"> <img src="img/19.jpg"  alt="Portfolio 1"> </div>
-                                <a title="Event 1" rel="prettyPhoto[galname]" 
-                                href="/Events" target="_blank">
+
+                                <a title="Event 7" rel="prettyPhoto[galname]"
+                                href="/Events/7" target="_blank">
+
                                 <div class="project-overlay">
                                   <div class="project-info">
                                     <div class="zoom-icon"></div>
@@ -507,8 +545,10 @@
                               <!-- Portfolio Item With PrettyPhoto  -->
                               <div style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;" class="portfolio-item one-four   videography isotope-item">
                                 <div class="portfolio-image"> <img src="img/19.jpg"  alt="Portfolio 1"> </div>
-                                <a title="Event 1" rel="prettyPhoto[galname]" 
-                                href="/Events" target="_blank">
+
+                                <a title="Event 8" rel="prettyPhoto[galname]"
+                                href="/Events/8" target="_blank">
+
                                 <div class="project-overlay">
                                   <div class="project-info">
                                     <div class="zoom-icon"></div>
@@ -540,6 +580,9 @@
 <!--
 <section class="main-section paddind" id="Portfolio">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 9694bd9536eb83be9df91327bebf2a2f3df2bf8b
     <div class="container">
         <h2>Portfolio</h2>
         <h6>Fresh portfolio of designs that will keep you wanting more.</h6>
@@ -547,6 +590,7 @@
     
     
 </section>   
+<<<<<<< HEAD
 =======
 	<div class="container">
     	<h2>Portfolio</h2>
@@ -557,6 +601,9 @@
 </section>   
 
 >>>>>>> 60be2b45e4cc1cb933e726a143e6431ebafe1449
+=======
+
+>>>>>>> 9694bd9536eb83be9df91327bebf2a2f3df2bf8b
 -->
 <section class="main-section" id="client_outer"><!--main-section client-part-start-->
   <div class="section-title text-center wow fadeInUp">
@@ -758,6 +805,7 @@
                     $('html, body').stop().animate({
                       scrollTop: $($anchor.attr('href')).offset().top - 91
                     }, 1500,'easeInOutExpo');
+
             /*
             if you don't want to use the easing effects:
             $('html, body').stop().animate({
@@ -765,6 +813,7 @@
             }, 1000);
             */
             event.preventDefault();
+
           });
                 })
 
@@ -787,6 +836,7 @@
 
 
                   $container.isotope({
+
     // disable window resizing
     resizable: true,
     masonry: {
@@ -794,7 +844,9 @@
     }
   });
 
+
                   $(window).smartresize(function(){
+
     // check if columns has changed
     var currentColumns = Math.floor( ( $body.width() -30 ) / colW );
     if ( currentColumns !== columns ) {
@@ -802,6 +854,7 @@
       columns = currentColumns;
       // apply width to container manually, then trigger relayout
       $container.width( columns * colW )
+
       .isotope('reLayout');
     }
     
@@ -825,6 +878,7 @@
 
               <script type="text/javascript">
                 jQuery(document).ready(function($){     
+
 // Portfolio Isotope
 var container = $('#portfolio-wrap');   
 
@@ -887,6 +941,7 @@ $(window).bind('resize', function () {
 });
 
 });
+
                 $( window ).load(function() {
                  jQuery('#all').click();
                  return false;
@@ -895,3 +950,4 @@ $(window).bind('resize', function () {
            </body>
 
            </html>
+

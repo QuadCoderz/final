@@ -3,7 +3,9 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, maximum-scale=1">
+
 	<title>Rooms</title>
+
 	<link rel="icon" href="favicon.png" type="image/png">
 	<link href="css/bootstrap.css" rel="stylesheet" type="text/css">
 	<link href="css/style.css" rel="stylesheet" type="text/css">
@@ -11,6 +13,7 @@
 	<link href="css/font-awesome.css" rel="stylesheet" type="text/css">
 	<link href="css/responsive.css" rel="stylesheet" type="text/css">
 	<link href="css/animate.css" rel="stylesheet" type="text/css">
+
   <link rel="stylesheet" type="text/css" href="css/sweetalert.css">
 
   <link href='http://fonts.googleapis.com/css?family=Lato:400,900,700,700italic,400italic,300italic,300,100italic,100,900italic' rel='stylesheet' type='text/css'>
@@ -26,6 +29,7 @@
   <script type="text/javascript" src="{{URL::asset('js/wow.js') }}"></script>
   <script type="text/javascript" src="{{URL::asset('js/classie.js') }}"></script>
   <script src="{{URL::asset('js/sweetalert.min.js') }}"></script> 
+
 
 <!--[if lt IE 9]>
     <script src="js/respond-1.1.0.min.js"></script>
@@ -62,9 +66,6 @@
     		$(".divclass").css("font-size", newFontSizeTitle)
     	}
     </script>
-    
-
-
     
     <style>
 
@@ -229,7 +230,7 @@
 
     </script>   
     
-    
+
   </head>
   <body>
 
@@ -388,11 +389,6 @@
 
          </tr>
 
-
-
-
-
-
          <!--- Password -->
          <tr>
            <td>Do you need a projector ?</td>
@@ -446,6 +442,7 @@
     document.getElementById('').onclick = function() {
       var section = document.createElement('section');
       section.className = 'wow fadeInDown';
+
       section.className = 'wow shake';
       section.className = 'wow zoomIn';
       section.className = 'wow lightSpeedIn';
@@ -461,6 +458,7 @@
      $('html, body').stop().animate({
       scrollTop: $($anchor.attr('href')).offset().top - 91co
     }, 1500,'easeInOutExpo');
+
 			/*
 			if you don't want to use the easing effects:
 			$('html, body').stop().animate({
@@ -469,10 +467,13 @@
 			*/
 			event.preventDefault();
 		});
+
   })
+
 </script> 
 
 <script type="text/javascript">
+
 
   $(window).load(function(){
 
@@ -484,6 +485,7 @@
 
 
     $container.isotope({
+
     // disable window resizing
     resizable: true,
     masonry: {
@@ -491,7 +493,9 @@
     }
   });
 
+
     $(window).smartresize(function(){
+
     // check if columns has changed
     var currentColumns = Math.floor( ( $body.width() -30 ) / colW );
     if ( currentColumns !== columns ) {
@@ -499,6 +503,7 @@
       columns = currentColumns;
       // apply width to container manually, then trigger relayout
       $container.width( columns * colW )
+
       .isotope('reLayout');
     }
 

@@ -8,15 +8,13 @@ use Illuminate\Http\Request;
 
 class EventsController extends Controller
 {
-  	
 
+    public function EventsPage($eventId){
 
-    public function EventsPage(){
-		return view('events');
+		$arr=['id'=>$eventId];
+		return view('Events',$arr);
 
-	}  
-
-	public function EventsBook(){
-		return "You Sucessfully Booked!"; // make it show user name
 	}
+
 }
+

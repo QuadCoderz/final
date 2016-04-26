@@ -11,7 +11,6 @@ class SignInController extends Controller
 {
     public function SignInPage(){
 
-		
 		return view('SignIn');
 
 	} 

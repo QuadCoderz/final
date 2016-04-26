@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class EventRegisterationMig extends Migration
+class CreateUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,10 +12,13 @@ class EventRegisterationMig extends Migration
      */
     public function up()
     {
-        Schema::create('event_registeration', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('event_id');
-            $table->string('user_id');
+            $table->string('name');
+            $table->string('mobile');
+            $table->string('email')->unique();
+            $table->string('password');
+            $table->rememberToken();
             $table->timestamps();
         });
     }
@@ -27,6 +30,6 @@ class EventRegisterationMig extends Migration
      */
     public function down()
     {
-        Schema::drop('event_registeration');
+        Schema::drop('users');
     }
 }

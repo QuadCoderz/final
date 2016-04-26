@@ -158,63 +158,83 @@
                 <label class="col-md-4 control-label">Name</label>
 
                 <div class="col-md-6">
-                  <input type="text" class="form-control" name="name" value="{{ old('name') }}">
+                    <input type="text" required="required" class="form-control" name="name" value="{{ old('name') }}">
 
-                  @if ($errors->has('name'))
-                  <span class="help-block">
-                    <strong>{{ $errors->first('name') }}</strong>
-                  </span>
-                  @endif
-                </div>
-              </div>
 
-              <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                <label class="col-md-4 control-label">E-Mail Address</label>
+                                @if ($errors->has('name'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
 
-                <div class="col-md-6">
-                  <input type="email" class="form-control" name="email" value="{{ old('email') }}">
 
-                  @if ($errors->has('email'))
-                  <span class="help-block">
-                    <strong>{{ $errors->first('email') }}</strong>
-                  </span>
-                  @endif
-                </div>
-              </div>
+                        <div class="form-group{{ $errors->has('mobile') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">Mobile No.</label>
 
-              <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                <label class="col-md-4 control-label">Password</label>
+                            <div class="col-md-6">
+                                <input type="text" pattern="[0-9]*" required="required" class="form-control" name="mobile" value="{{ old('mobile') }}">
 
-                <div class="col-md-6">
-                  <input type="password" class="form-control" name="password">
+                                @if ($errors->has('mobile'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('mobile') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
 
-                  @if ($errors->has('password'))
-                  <span class="help-block">
-                    <strong>{{ $errors->first('password') }}</strong>
-                  </span>
-                  @endif
-                </div>
-              </div>
+                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">E-Mail Address</label>
 
-              <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
-                <label class="col-md-4 control-label">Confirm Password</label>
+                            <div class="col-md-6">
 
-                <div class="col-md-6">
-                  <input type="password" class="form-control" name="password_confirmation">
+                                <input type="email" required="required" class="form-control" name="email" value="{{ old('email') }}">
 
-                  @if ($errors->has('password_confirmation'))
-                  <span class="help-block">
-                    <strong>{{ $errors->first('password_confirmation') }}</strong>
-                  </span>
-                  @endif
-                </div>
-              </div>
+                                @if ($errors->has('email'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
 
-              <div class="form-group">
-                <div class="col-md-6 col-md-offset-4">
-                  <button type="submit" class="btn btn-primary">
-                    <i class="fa fa-btn fa-user"></i>Register
-                  </button>
+                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">Password</label>
+
+                            <div class="col-md-6">
+
+                                <input type="password" required="required" class="form-control" name="password">
+
+                                @if ($errors->has('password'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">Confirm Password</label>
+
+                            <div class="col-md-6">
+
+                                <input type="password" required="required" class="form-control" name="password_confirmation">
+
+
+                                @if ($errors->has('password_confirmation'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('password_confirmation') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fa fa-btn fa-user"></i>Register
+                                </button>
                 </div>
               </div>
             </form>
@@ -264,6 +284,7 @@
     $('html, body').stop().animate({
      scrollTop: $($anchor.attr('href')).offset().top - 91co
    }, 1500,'easeInOutExpo');
+
 			/*
 			if you don't want to use the easing effects:
 			$('html, body').stop().animate({
@@ -272,6 +293,7 @@
 			*/
 			event.preventDefault();
 		});
+
  })
 </script> 
 
@@ -287,6 +309,7 @@
 
 
     $container.isotope({
+
     // disable window resizing
     resizable: true,
     masonry: {
@@ -294,7 +317,9 @@
     }
   });
 
+
     $(window).smartresize(function(){
+
     // check if columns has changed
     var currentColumns = Math.floor( ( $body.width() -30 ) / colW );
     if ( currentColumns !== columns ) {
@@ -302,6 +327,7 @@
       columns = currentColumns;
       // apply width to container manually, then trigger relayout
       $container.width( columns * colW )
+
       .isotope('reLayout');
     }
 
@@ -321,7 +347,6 @@
   });
 
 </script>
-
 
 <script type="text/javascript">
 

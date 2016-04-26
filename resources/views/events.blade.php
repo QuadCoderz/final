@@ -3,7 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, maximum-scale=1">
+
   <title>Events</title>
+
   <link rel="icon" href="favicon.png" type="image/png">
   <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
   <link href="css/style.css" rel="stylesheet" type="text/css">
@@ -64,14 +66,17 @@
   <body>
 
     <!--Header_section-->
+
     <header id="header_outer" class="fadeInUp">
       <div class="container">
         <div class="header_section fadeInUp">
+
           <div class="logo"><a href="javascript:void(0)"><img src="img/logob.png" alt=""></a></div>
           <nav class="nav" id="nav">
             <ul class="toggle">
               <li><a href="/home">Home</a></li>
               <li><a href="/home#About_Us">About Us</a></li>
+
               <li><a href="{{ url('/RoomReservation') }}">Reservation</a></li>
               <li><a href="{{ url('/Store') }}">Store</a></li>
               <li><a href="/home#Membership">Membership</a></li>
@@ -92,10 +97,12 @@
                 </ul>
               </li>
               @endif
+
             </ul>
             <ul class="">
               <li><a href="/home">Home</a></li>
               <li><a href="/home#About_Us">About Us</a></li>
+
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                   Services <span class="caret"></span>
@@ -130,6 +137,7 @@
 
             </ul>
             
+
           </nav>
           <a class="res-nav_click animated wobble wow"  href="javascript:void(0)"><i class="fa-bars"></i></a> 
 
@@ -187,7 +195,9 @@
             <div class="special-plan text-center">
               <p>If you are interseted book a seat</p>
 
-              <a href="/Events/BookNow" class="btn btn-blue">Book Now</a>
+
+              <a href="eventRegisterationController/{{$id}}" class="btn btn-blue">Book Now</a>
+
 
             </div>
           </div>
@@ -263,6 +273,7 @@
       })
     </script> 
 
+
     <script type="text/javascript">
 
       $(window).load(function(){
@@ -275,14 +286,17 @@
 
         
         $container.isotope({
+
     // disable window resizing
     resizable: true,
     masonry: {
       columnWidth: colW
     }
   });
+
         
         $(window).smartresize(function(){
+
     // check if columns has changed
     var currentColumns = Math.floor( ( $body.width() -30 ) / colW );
     if ( currentColumns !== columns ) {
@@ -290,6 +304,7 @@
       columns = currentColumns;
       // apply width to container manually, then trigger relayout
       $container.width( columns * colW )
+
       .isotope('reLayout');
     }
     
@@ -310,13 +325,11 @@
 
     </script>
 
-
-
-
     <script type="text/javascript">
 
 
       jQuery(document).ready(function($){     
+
 // Portfolio Isotope
 var container = $('#portfolio-wrap');   
 
@@ -385,6 +398,7 @@ $(window).bind('resize', function () {
 });
 
 });
+
       $( window ).load(function() {
         jQuery('#all').click();
         return false;
@@ -392,3 +406,4 @@ $(window).bind('resize', function () {
     </script>
   </body>
   </html>
+
