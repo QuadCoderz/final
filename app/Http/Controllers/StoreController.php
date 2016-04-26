@@ -1,0 +1,15 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+use App\Http\Requests;
+
+class StoreController extends Controller
+{
+     public function StorePage(){
+		return view('store');
+
+	}
+}
