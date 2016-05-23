@@ -1,387 +1,245 @@
-<!doctype html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, maximum-scale=1">
+<?php
+use App\events;
+?>
 
-  @if (Auth::guest())
-  <title>Creative</title>
-  @else
-  <title>Home</title>
-  @endif
-  
+@extends('layout')
+@section('title')
+@if (Auth::guest())
+<title>Creativo</title>
+@else
+<title>Home</title>
+@endif
+@stop
+@section('content')
+<div id="top_content" class="row wow fadeInUp">
 
-  <link rel="icon" href="favicon.png" type="image/png">
-  <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
-  <link href="css/style.css" rel="stylesheet" type="text/css">
-  <link href="css/linecons.css" rel="stylesheet" type="text/css">
-  <link href="css/font-awesome.css" rel="stylesheet" type="text/css">
-  <link href="css/responsive.css" rel="stylesheet" type="text/css">
-  <link href="css/animate.css" rel="stylesheet" type="text/css">
+  <div class="col-lg-12 text-center">
+    <div id="carousel-example-generic" class="carousel slide">
+      <!-- Indicators -->
+      <ol class="carousel-indicators hidden-xs">
+        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+      </ol>
 
-  <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-
-
-  <link href='http://fonts.googleapis.com/css?family=Lato:400,900,700,700italic,400italic,300italic,300,100italic,100,900italic' rel='stylesheet' type='text/css'>
-  <link href='http://fonts.googleapis.com/css?family=Dosis:400,500,700,800,600,300,200' rel='stylesheet' type='text/css'>
-
-  <!--[if IE]><style type="text/css">.pie {behavior:url(PIE.htc);}</style><![endif]-->
-
-  <script type="text/javascript" src="{{URL::asset('js/jquery.1.8.3.min.js') }}"></script>
-  <script type="text/javascript" src="{{URL::asset('js/bootstrap.js') }}"></script>
-  <script type="text/javascript" src="{{URL::asset('js/jquery-scrolltofixed.js') }}"></script>
-  <script type="text/javascript" src="{{URL::asset('js/jquery.easing.1.3.js') }}"></script>
-  <script type="text/javascript" src="{{URL::asset('js/jquery.isotope.js') }}"></script>
-  <script type="text/javascript" src="{{URL::asset('js/wow.js') }}"></script>
-  <script type="text/javascript" src="{{URL::asset('js/classie.js') }}"></script>
-
-<!--[if lt IE 9]>
-    <script src="js/respond-1.1.0.min.js"></script>
-    <script src="js/html5shiv.js"></script>
-    <script src="js/html5element.js"></script>
-    <![endif]-->
-
-    <script type="text/javascript">
-     $(document).ready(function(e) {
-      $('.res-nav_click').click(function(){
-
-        $('ul.toggle').slideToggle(600) 
-      });   
-
-      $(document).ready(function() {
-        $(window).bind('scroll', function() {
-         if ($(window).scrollTop() > 0) {
-           $('#header_outer').addClass('fixed');
-         }
-         else {
-           $('#header_outer').removeClass('fixed');
-         }
-       });
-
-      });
-    }); 
-
-     function resizeText() {
-       var preferredWidth = 767;
-       var displayWidth = window.innerWidth;
-       var percentage = displayWidth / preferredWidth;
-       var fontsizetitle = 25;
-       var newFontSizeTitle = Math.floor(fontsizetitle * percentage);
-       $(".divclass").css("font-size", newFontSizeTitle)
-     }
-   </script>
- </head>
- <body>
-
-  <!--Header_section-->
-
-  <header id="header_outer" class="fadeInUp">
-    <div class="container">
-      <div class="header_section fadeInUp">
-        <div class="logo"><a href="javascript:void(0)"><img src="img/logob.png" alt=""></a></div>
-        <nav class="nav" id="nav">
-          <ul class="toggle">
-            <li><a href="/home">Home</a></li>
-            <li><a href="/home#About_Us">About Us</a></li>
-            <li><a href="{{ url('/RoomReservation') }}">Reservation</a></li>
-            <li><a href="{{ url('/Store') }}">Store</a></li>
-            <li><a href="/home#Membership">Membership</a></li>
-            <li><a href="/home#Portfolio">Events</a></li>
-            <li><a href="/home#contact">Contact</a></li>
-
-            @if (Auth::guest())
-            <li><a href="{{ url('/SignIn')}}">Login</a></li>
-            <li><a href="{{ url('/SignUp') }}">Register</a></li>
-            @else
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                {{ Auth::user()->name }} <span class="caret"></span>
-              </a>
-
-              <ul class="dropdown-menu" role="menu">
-                <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
-              </ul>
-            </li>
-            @endif
-          </ul>
-          <ul class="">
-            <li><a href="/home">Home</a></li>
-            <li><a href="/home#About_Us">About Us</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                Services <span class="caret"></span>
-              </a>
-
-              <ul class="dropdown-menu" role="menu" >
-                <li><a href="{{ url('/RoomReservation') }}">Reservation</a></li>
-                <li><a href="{{ url('/Store') }}">Store</a></li>
-
-              </ul>
-            </li>
-            <li><a href="/home#Membership">Membership</a></li>
-            <li><a href="/home#Portfolio">Events</a></li>
-            <li><a href="/home#contact">Contact</a></li>
-
-            @if (Auth::guest())
-            <li><a href="{{ url('/SignIn') }}">Login</a></li>
-            <li><a href="{{ url('/SignUp') }}">Register</a></li>
-            @else
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                {{ Auth::user()->name }} <span class="caret"></span>
-              </a>
-
-              <ul class="dropdown-menu" role="menu">
-                <li><a href="{{ url('/home') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
-              </ul>
-            </li>
-            @endif
-            
-
-
-          </ul>
-
-
-        </nav>
-        <a class="res-nav_click animated wobble wow"  href="javascript:void(0)"><i class="fa-bars"></i></a> 
-
-
-      </div>
-    </div>
-  </header>
-  <!--Header_section--> 
-
-  <!--Top_content-->
-
-
-  <div id="top_content" class="row wow fadeInUp">
-
-    <div class="col-lg-12 text-center">
-      <div id="carousel-example-generic" class="carousel slide">
-        <!-- Indicators -->
-        <ol class="carousel-indicators hidden-xs">
-          <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-          <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-          <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-        </ol>
-
-        <!-- Wrapper for slides -->
-        <div class="carousel-inner">
-          <div class="item active">
-            <img class="img-responsive img-full" src="img/slide-1.jpg" alt="">
-          </div>
-          <div class="item">
-            <img class="img-responsive img-full" src="img/slide-2.jpg" alt="">
-          </div>
-          <div class="item">
-            <img class="img-responsive img-full" src="img/slide-3.jpg" alt="">
-          </div>
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner">
+        <div class="item active">
+          <img class="img-responsive img-full" src="img/slide-1.jpg" alt="">
         </div>
-
-        <!-- Controls -->
-        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-          <span class="icon-prev"></span>
-        </a>
-        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-          <span class="icon-next"></span>
-        </a>
+        <div class="item">
+          <img class="img-responsive img-full" src="img/slide-2.jpg" alt="">
+        </div>
+        <div class="item">
+          <img class="img-responsive img-full" src="img/slide-3.jpg" alt="">
+        </div>
       </div>
-      <h2 class="brand-before wow fadeInUp">
-        <small>Welcome to</small>
-      </h2>
-      <h1 class="brand-name wow bounceInLeft delay-03s">Creativo</h1>
-      <hr class="tagline-divider">
+
+      <!-- Controls -->
+      <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+        <span class="icon-prev"></span>
+      </a>
+      <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+        <span class="icon-next"></span>
+      </a>
     </div>
+    <h2 class="brand-before wow fadeInUp">
+      <small>Welcome to</small>
+    </h2>
+    <h1 class="brand-name wow bounceInLeft delay-03s">Creativo</h1>
+    <hr class="tagline-divider">
   </div>
+</div>
 
-  <!--About Us--> 
-  <section id="About_Us">
-    <div class="container">
-      <div class="row">
+<!--About Us--> 
+<section id="About_Us">
+  <div class="container">
+    <div class="row">
 
-        <div class="section-title text-center wow fadeInUp">
-          <h2>About Us</h2>    
-          <p>Creativo is like the gym for freelancers, start-ups and entrepreneurs. Yeah you can set up your desk in your living room, just like you can set up a treadmill, but how much fun is working or working out alone really? Working alone kinda sucks. You may have the most organized sock drawer in town. Just think for a moment what it could create for your business if you spent even a few days a week in an environment where everyone around you was also working on their business?
+      <div class="section-title text-center wow fadeInUp">
+        <h2>About Us</h2>    
+        <p>Creativo is like the gym for freelancers, start-ups and entrepreneurs. Yeah you can set up your desk in your living room, just like you can set up a treadmill, but how much fun is working or working out alone really? Working alone kinda sucks. You may have the most organized sock drawer in town. Just think for a moment what it could create for your business if you spent even a few days a week in an environment where everyone around you was also working on their business?
 
-            As a community of local-minded and business-focused people, we are able to collaborate on projects, share resources and generate more success to support our livelihoods.
+          As a community of local-minded and business-focused people, we are able to collaborate on projects, share resources and generate more success to support our livelihoods.
 
-            Our Values:
+          Our Values:
 
-            Collaboration
-            Openness
-            Community
-            Accessibility
-            Sustainability 
+          Collaboration
+          Openness
+          Community
+          Accessibility
+          Sustainability 
 
-            Creativo is designed to help your business thrive.
+          Creativo is designed to help your business thrive.
 
-            Start-up school is our main event.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!--Service-->
-    <section  id="service">
-      <div class="container">
-        <div class="section-title text-center wow fadeInUp">
-         <h2>Services</h2>
-       </div>
-       <div class="service_area">
-        <div class="row">
-          <div class="col-lg-4">
-            <div class="service_block">
-
-              <div class="service_icon delay-03s animated wow  zoomIn"> <span><i class="fa-book"></i></span> </div>
-              <h3 class="animated fadeInUp wow">Study</h3>
-
-              <p class="animated fadeInDown wow">Proin iaculis purus consequat sem cure digni. Donec porttitora entum suscipit  aenean rhoncus posuere odio in tincidunt.</p>
-            </div>
-          </div>
-          <div class="col-lg-4">
-            <div class="service_block">
-
-              <div class="service_icon icon3  delay-03s animated wow zoomIn"> <span><i class="fa-wifi"></i></span> </div>
-              <h3 class="animated fadeInUp wow">Wifi</h3>
-
-              <p class="animated fadeInDown wow">Proin iaculis purus consequat sem cure digni. Donec porttitora entum suscipit  aenean rhoncus posuere odio in tincidunt.</p>
-            </div>
-          </div>
-          <div class="col-lg-4">
-            <div class="service_block">
-
-              <div class="service_icon icon2  delay-03s animated wow zoomIn"> <span><i class="fa-paint-brush"></i></span> </div>
-              <h3 class="animated fadeInUp wow">Paint</h3>
-
-              <p class="animated fadeInDown wow">Proin iaculis purus consequat sem cure digni. Donec porttitora entum suscipit  aenean rhoncus posuere odio in tincidunt.</p>
-            </div>
-          </div>
+          Start-up school is our main event.</p>
         </div>
       </div>
     </div>
   </section>
   <!--Service-->
-
-  <section id="Membership">
+  <section  id="service">
     <div class="container">
+      <div class="section-title text-center wow fadeInUp">
+       <h2>Services</h2>
+     </div>
+     <div class="service_area">
       <div class="row">
+        <div class="col-lg-4">
+          <div class="service_block">
 
-        <div class="section-title text-center wow fadeInUp">
-          <h2>Membership</h2>
-        </div>
+            <div class="service_icon delay-03s animated wow  zoomIn"> <span><i class="fa-book"></i></span> </div>
+            <h3 class="animated fadeInUp wow">Study</h3>
 
-        <div class="col-md-3 col-sm-6 col-xs-12 wow fadeInUp">
-          <div class="pricing-table text-center">
-            <div class="price">
-              <span class="plan">Basic</span>
-              <span class="value"><small>EGP</small><strong>19</strong>/MO</span>
-            </div>
-            <ul class="text-center">
-              <li>Feature N0 1</li>
-              <li>Feature N0 2</li>
-              <li>Feature N0 3</li>
-              <li>Feature N0 4</li>
-            </ul>
-
-
-            <a href="/SignIn" class="btn btn-price">Subscribe Now</a>
-
-
+            <p class="animated fadeInDown wow">Proin iaculis purus consequat sem cure digni. Donec porttitora entum suscipit  aenean rhoncus posuere odio in tincidunt.</p>
           </div>
         </div>
+        <div class="col-lg-4">
+          <div class="service_block">
 
-        <div class="col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="0.3s">
-          <div class="pricing-table text-center">
-            <div class="price">
-              <span class="plan">Premium</span>
-              <span class="value"><small>EGP</small><strong>29</strong>/MO</span>
-            </div>
-            <ul class="text-center">
-              <li>Feature N0 1</li>
-              <li>Feature N0 2</li>
-              <li>Feature N0 3</li>
-              <li>Feature N0 4</li>
-            </ul>
+            <div class="service_icon icon3  delay-03s animated wow zoomIn"> <span><i class="fa-wifi"></i></span> </div>
+            <h3 class="animated fadeInUp wow">Wifi</h3>
 
-
-            <a href="/SignIn" class="btn btn-price">Subscribe Now</a>
-
+            <p class="animated fadeInDown wow">Proin iaculis purus consequat sem cure digni. Donec porttitora entum suscipit  aenean rhoncus posuere odio in tincidunt.</p>
           </div>
         </div>
+        <div class="col-lg-4">
+          <div class="service_block">
 
-        <div class="col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="0.6s">
-          <div class="pricing-table text-center">
-            <div class="price">
-              <span class="plan">Pro</span>
-              <span class="value"><small>EGP</small><strong>39</strong>/MO</span>
-            </div>
-            <ul class="text-center">
-              <li>Feature N0 1</li>
-              <li>Feature N0 2</li>
-              <li>Feature N0 3</li>
-              <li>Feature N0 4</li>
-            </ul>
+            <div class="service_icon icon2  delay-03s animated wow zoomIn"> <span><i class="fa-paint-brush"></i></span> </div>
+            <h3 class="animated fadeInUp wow">Paint</h3>
 
-            <a href="/SignIn" class="btn btn-price">Subscribe Now</a>
-
-
-          </div>
-        </div>
-
-        <div class="col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="0.9s">
-          <div class="pricing-table text-center">
-            <div class="price">
-              <span class="plan">Platinum</span>
-              <span class="value"><small>EGP</small><strong>49</strong>/MO</span>
-            </div>
-            <ul class="text-center">
-              <li>Feature N0 1</li>
-              <li>Feature N0 2</li>
-              <li>Feature N0 3</li>
-              <li>Feature N0 4</li>
-            </ul>
-
-
-            <a href="/SignIn"  class="btn btn-price">Subscribe Now</a>
-
-
+            <p class="animated fadeInDown wow">Proin iaculis purus consequat sem cure digni. Donec porttitora entum suscipit  aenean rhoncus posuere odio in tincidunt.</p>
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-12 wow fadeInUp">
-          <div class="special-plan text-center">
-            <div class="dropdown ">
-              <p>Contact us if you have special request</p>
-              <a href="#" class=" btn btn-blue  dropdown-toggle"type="button" data-toggle="dropdown">Customize your own <span class="caret"></span></a>
+    </div>
+  </div>
+</section>
+<!--Service-->
 
-              <ul class="dropdown-menu col-md-4 " style="margin-top: 10px; position: absolute; float: none;">
+<section id="Membership">
+  <div class="container">
+    <div class="row">
 
-                <form>
-                  <div>
-                    <label><input type="checkbox" /> feature 1</label>
+      <div class="section-title text-center wow fadeInUp">
+        <h2>Membership</h2>
+      </div>
 
-                  </div>
-                  <div>
-                    <label><input type="checkbox" /> feature 2</label>
+      <div class="col-md-3 col-sm-6 col-xs-12 wow fadeInUp">
+        <div class="pricing-table text-center">
+          <div class="price">
+            <span class="plan">Basic</span>
+            <span class="value"><small>EGP</small><strong>19</strong>/MO</span>
+          </div>
+          <ul class="text-center">
+            <li>Feature N0 1</li>
+            <li>Feature N0 2</li>
+            <li>Feature N0 3</li>
+            <li>Feature N0 4</li>
+          </ul>
 
-                  </div>
-                  <div>
-                    <label><input type="checkbox" /> feature 3</label>
 
-                  </div>
-                  <div>
+          <a href="/home/membership/1" class="btn btn-price">Subscribe Now</a>
 
-                    <a href="/SignIn" type="button" class="btn btn-primary" style="margin-top: 10px;">Submit</a>
 
-                  </div>
-                </form>
-              </ul>
+        </div>
+      </div>
 
-            </div>
+      <div class="col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="0.3s">
+        <div class="pricing-table text-center">
+          <div class="price">
+            <span class="plan">Premium</span>
+            <span class="value"><small>EGP</small><strong>29</strong>/MO</span>
+          </div>
+          <ul class="text-center">
+            <li>Feature N0 1</li>
+            <li>Feature N0 2</li>
+            <li>Feature N0 3</li>
+            <li>Feature N0 4</li>
+          </ul>
 
+
+          <a href="/home/membership/2" class="btn btn-price">Subscribe Now</a>
+
+        </div>
+      </div>
+
+      <div class="col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="0.6s">
+        <div class="pricing-table text-center">
+          <div class="price">
+            <span class="plan">Pro</span>
+            <span class="value"><small>EGP</small><strong>39</strong>/MO</span>
+          </div>
+          <ul class="text-center">
+            <li>Feature N0 1</li>
+            <li>Feature N0 2</li>
+            <li>Feature N0 3</li>
+            <li>Feature N0 4</li>
+          </ul>
+
+          <a href="/home/membership/3" class="btn btn-price">Subscribe Now</a>
+
+
+        </div>
+      </div>
+
+      <div class="col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="0.9s">
+        <div class="pricing-table text-center">
+          <div class="price">
+            <span class="plan">Platinum</span>
+            <span class="value"><small>EGP</small><strong>49</strong>/MO</span>
+          </div>
+          <ul class="text-center">
+            <li>Feature N0 1</li>
+            <li>Feature N0 2</li>
+            <li>Feature N0 3</li>
+            <li>Feature N0 4</li>
+          </ul>
+
+
+          <a href="/home/membership/4"  class="btn btn-price">Subscribe Now</a>
+
+
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 col-lg-12 wow fadeInUp">
+        <div class="special-plan text-center">
+          <div class="dropdown ">
+            <p>Contact us if you have special request</p>
+            <a href="#" class=" btn btn-blue  dropdown-toggle"type="button" data-toggle="dropdown">Customize your own <span class="caret"></span></a>
+            <ul class="dropdown-menu" style="margin-top: 10px; position: relative; float: none;">
+
+              <form method="get" action="/home/membership/5">
+                <div>
+                  <label><input type="checkbox" name="feature_1" value="free_access" /> free access</label>
+
+                </div>
+                <div>
+                  <label><input type="checkbox" name="feature_2" value="unlimited_hours" /> unlimited hours</label>
+
+                </div>
+                <div>
+                  <label><input type="checkbox" name="feature_3" value="workshops_discount" />workshops discount</label>
+
+                </div>
+                <div>
+                  <label><input type="checkbox" name="feature_4" value="free_events" />free events</label>
+
+                </div>
+                <div>
+
+                  <button type="submit" value="submit">submit</button>
+                </div>
+              </form>
+            </ul>
           </div>
 
         </div>
+
+      </div>
 
                   <!--  <div class="dropdown col-md-offset-5 col-md-3">
                                 <a class="btn  btn-blue dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
@@ -418,145 +276,51 @@
                           <!-- Portfolio Plus Filters -->
 
 
+
                           <div class="portfolio"> 
 
                             <!-- Portfolio Wrap -->
                             <div class="isotope wow fadeInUp delay-03s" style="position: relative; overflow: hidden; height: 480px;" id="portfolio-wrap"> 
 
                               <!-- Portfolio Item With PrettyPhoto  -->
-                              <div style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;" class="portfolio-item one-four   videography isotope-item">
-                                <div class="portfolio-image"> <img src="img/19.jpg"  alt="Portfolio 1"> </div>
-                                <a title="Event 1" rel="prettyPhoto[galname]" 
 
-                                href="/Events/1" target="_blank">
 
-                                <div class="project-overlay">
+
+
+                              <?php
+
+
+                              $event=events::all();
+                              foreach($event as $ev){
+
+                                echo'
+
+                                  <div style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;" class="portfolio-item one-four   videography isotope-item">
+                                <div class="portfolio-image"   > <img src="'.$ev->imagePath.'"'.  'alt="Portfolio 1" style="width: 300px;height: 300px"> </div>
+                                <a title="Event 1" rel="prettyPhoto[galname]"
+
+                                href="/Events/'.$ev->id.'">';
+
+                               echo' <div class="project-overlay">
                                   <div class="project-info">
                                     <div class="zoom-icon"></div>
-                                    <h4 class="project-name">Event 1</h4>
+                                    <h4 class="project-name">'.$ev->title.'</h4>
                                     <p class="project-categories">more details</p>
                                   </div>
                                 </div>
                               </a> </div>
-                              <!--/Portfolio Item With PrettyPhoto  --> 
 
-                              <!-- Portfolio Item Video Expander  -->
-                              <div style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;" class="portfolio-item one-four   videography isotope-item">
-                                <div class="portfolio-image"> <img src="img/41 5alas.jpg"  alt="Portfolio 1"> </div>
+                                ';
 
-                                <a title="Event 2" rel="prettyPhoto[galname]"
-                                href="/Events/2" target="_blank">
 
-                                <div class="project-overlay">
-                                  <div class="project-info">
-                                    <div class="zoom-icon"></div>
-                                    <h4 class="project-name">Event 2</h4>
-                                    <p class="project-categories">more details</p>
-                                  </div>
-                                </div>
-                              </a> </div>
-                              <!--/Portfolio Item Video Expander  --> 
 
-                              <!-- Portfolio Item Normal Expander -->
-                              <div style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;" class="portfolio-item one-four   videography isotope-item">
-                                <div class="portfolio-image"> <img src="img/19.jpg"  alt="Portfolio 1"> </div>
 
-                                <a title="Event 3" rel="prettyPhoto[galname]"
-                                href="/Events/3" target="_blank">
+                                }
+                              ?>
 
-                                <div class="project-overlay">
-                                  <div class="project-info">
-                                    <div class="zoom-icon"></div>
-                                    <h4 class="project-name">Event 3</h4>
-                                    <p class="project-categories">more details</p>
-                                  </div>
-                                </div>
-                              </a> </div>
-                              <!--/Portfolio Item Normal Expander --> 
 
-                              <!-- Portfolio Item FullScreen Expander -->
-                              <div style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;" class="portfolio-item one-four   videography isotope-item">
-                                <div class="portfolio-image"> <img src="img/19.jpg"  alt="Portfolio 1"> </div>
 
-                                <a title="Event 4" rel="prettyPhoto[galname]"
-                                href="/Events/4" target="_blank">
 
-                                <div class="project-overlay">
-                                  <div class="project-info">
-                                    <div class="zoom-icon"></div>
-                                    <h4 class="project-name">Event 4</h4>
-                                    <p class="project-categories">more details</p>
-                                  </div>
-                                </div>
-                              </a> </div>
-                              <!-- Portfolio Item FullScreen Expander --> 
-
-                              <!-- Portfolio Item FullScreen Expander -->
-                              <div style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;" class="portfolio-item one-four   videography isotope-item">
-                                <div class="portfolio-image"> <img src="img/19.jpg"  alt="Portfolio 1"> </div>
-
-                                <a title="Event 5" rel="prettyPhoto[galname]"
-                                href="/Events/5" target="_blank">
-
-                                <div class="project-overlay">
-                                  <div class="project-info">
-                                    <div class="zoom-icon"></div>
-                                    <h4 class="project-name">Event 5</h4>
-                                    <p class="project-categories">more details</p>
-                                  </div>
-                                </div>
-                              </a> </div>
-                              <!--/Portfolio Item FullScreen Expander --> 
-
-                              <!-- Portfolio Item Normal Expander -->
-                              <div style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;" class="portfolio-item one-four   videography isotope-item">
-                                <div class="portfolio-image"> <img src="img/19.jpg"  alt="Portfolio 1"> </div>
-
-                                <a title="Event 6" rel="prettyPhoto[galname]"
-                                href="/Events/6" target="_blank">
-
-                                <div class="project-overlay">
-                                  <div class="project-info">
-                                    <div class="zoom-icon"></div>
-                                    <h4 class="project-name">Event 6</h4>
-                                    <p class="project-categories">more details</p>
-                                  </div>
-                                </div>
-                              </a> </div>
-                              <!--/Portfolio Item Normal Expander --> 
-
-                              <!-- Portfolio Item External Project  -->
-                              <div style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;" class="portfolio-item one-four   videography isotope-item">
-                                <div class="portfolio-image"> <img src="img/19.jpg"  alt="Portfolio 1"> </div>
-
-                                <a title="Event 7" rel="prettyPhoto[galname]"
-                                href="/Events/7" target="_blank">
-
-                                <div class="project-overlay">
-                                  <div class="project-info">
-                                    <div class="zoom-icon"></div>
-                                    <h4 class="project-name">Event 7</h4>
-                                    <p class="project-categories">more details</p>
-                                  </div>
-                                </div>
-                              </a> </div>
-                              <!--/Portfolio Item External Project  --> 
-
-                              <!-- Portfolio Item With PrettyPhoto  -->
-                              <div style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;" class="portfolio-item one-four   videography isotope-item">
-                                <div class="portfolio-image"> <img src="img/19.jpg"  alt="Portfolio 1"> </div>
-
-                                <a title="Event 8" rel="prettyPhoto[galname]"
-                                href="/Events/8" target="_blank">
-
-                                <div class="project-overlay">
-                                  <div class="project-info">
-                                    <div class="zoom-icon"></div>
-                                    <h4 class="project-name">Event 8</h4>
-                                    <p class="project-categories">more details</p>
-                                  </div>
-                                </div>
-                              </a> </div>
                               <!--/Portfolio Item With PrettyPhoto  --> 
 
                               <!--/Portfolio Wrap --> 
@@ -592,10 +356,10 @@
 </section>   
 <<<<<<< HEAD
 =======
-	<div class="container">
-    	<h2>Portfolio</h2>
-    	<h6>Fresh portfolio of designs that will keep you wanting more.</h6>
-	</div>
+  <div class="container">
+      <h2>Portfolio</h2>
+      <h6>Fresh portfolio of designs that will keep you wanting more.</h6>
+  </div>
     
     
 </section>   
@@ -766,188 +530,4 @@
                   
                 </div>
               </footer>
-
-              <script type="text/javascript">
-                $(document).ready(function(e) {
-                  $('#header_outer').scrollToFixed();
-                  $('.res-nav_click').click(function(){
-                    $('.main-nav').slideToggle();
-                    return false    
-
-                  });
-
-                });
-              </script> 
-              <script>
-                wow = new WOW(
-                {
-                  animateClass: 'animated',
-                  offset:       100
-                }
-                );
-                wow.init();
-                document.getElementById('').onclick = function() {
-                  var section = document.createElement('section');
-                  section.className = 'wow fadeInDown';
-                  section.className = 'wow shake';
-                  section.className = 'wow zoomIn';
-                  section.className = 'wow lightSpeedIn';
-                  this.parentNode.insertBefore(section, this);
-                };
-              </script> 
-              <script type="text/javascript">
-
-                $(window).load(function(){
-
-                  $('a').bind('click',function(event){
-                    var $anchor = $(this);
-
-                    $('html, body').stop().animate({
-                      scrollTop: $($anchor.attr('href')).offset().top - 91
-                    }, 1500,'easeInOutExpo');
-
-            /*
-            if you don't want to use the easing effects:
-            $('html, body').stop().animate({
-                scrollTop: $($anchor.attr('href')).offset().top
-            }, 1000);
-            */
-            event.preventDefault();
-
-          });
-                })
-
-              </script> 
-              <script type="text/javascript">
-                $('.dropdown-menu input, .dropdown-menu label').click(function(e) {
-                  e.stopPropagation();
-                });
-              </script>
-
-              <script type="text/javascript">
-
-                $(window).load(function(){
-
-
-                  var $container = $('.portfolioContainer'),
-                  $body = $('body'),
-                  colW = 350,
-                  columns = null;
-
-
-                  $container.isotope({
-
-    // disable window resizing
-    resizable: true,
-    masonry: {
-      columnWidth: colW
-    }
-  });
-
-
-                  $(window).smartresize(function(){
-
-    // check if columns has changed
-    var currentColumns = Math.floor( ( $body.width() -30 ) / colW );
-    if ( currentColumns !== columns ) {
-      // set new column count
-      columns = currentColumns;
-      // apply width to container manually, then trigger relayout
-      $container.width( columns * colW )
-
-      .isotope('reLayout');
-    }
-    
-  }).smartresize(); // trigger resize to set container width
-                  $('.portfolioFilter a').click(function(){
-                    $('.portfolioFilter .current').removeClass('current');
-                    $(this).addClass('current');
-
-                    var selector = $(this).attr('data-filter');
-                    $container.isotope({
-
-                      filter: selector,
-                    });
-                    return false;
-                  });
-
-                });
-
-              </script>
-
-
-              <script type="text/javascript">
-                jQuery(document).ready(function($){     
-
-// Portfolio Isotope
-var container = $('#portfolio-wrap');   
-
-container.isotope({
-  animationEngine : 'best-available',
-  animationOptions: {
-   duration: 200,
-   queue: false
- },
- layoutMode: 'fitRows'
-
-}); 
-
-$('#filters a').click(function(){
-  $('#filters a').removeClass('active');
-  $(this).addClass('active');
-  var selector = $(this).attr('data-filter');
-  container.isotope({ filter: selector });
-  setProjects();        
-  return false;
-});
-function splitColumns() { 
- var winWidth = $(window).width(), 
- columnNumb = 1;
-
- if (winWidth > 1024) {
-  columnNumb = 4;
-} else if (winWidth > 900) {
-  columnNumb = 2;
-} else if (winWidth > 479) {
-  columnNumb = 2;
-} else if (winWidth < 479) {
-  columnNumb = 1;
-}
-
-return columnNumb;
-}       
-
-function setColumns() { 
- var winWidth = $(window).width(), 
- columnNumb = splitColumns(), 
- postWidth = Math.floor(winWidth / columnNumb);
-
- container.find('.portfolio-item').each(function () { 
-  $(this).css( { 
-   width : postWidth + 'px' 
- });
-});
-}       
-
-function setProjects() { 
- setColumns();
- container.isotope('reLayout');
-}       
-container.imagesLoaded(function () { 
- setColumns();
-});
-$(window).bind('resize', function () { 
- setProjects();         
-});
-
-});
-
-                $( window ).load(function() {
-                 jQuery('#all').click();
-                 return false;
-               });
-             </script>
-           </body>
-
-           </html>
-
+              @stop

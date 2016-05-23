@@ -4,16 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 
+use Auth;
+
 use Illuminate\Http\Request;
 
 
 class SignInController extends Controller
 {
-    public function SignInPage(){
+	public function SignInPage(){
 
-		return view('SignIn');
 
-	} 
 
-}
+			return view('auth.login');
+
+		}
+	}
 

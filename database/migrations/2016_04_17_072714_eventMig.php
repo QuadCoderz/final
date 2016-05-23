@@ -15,7 +15,9 @@ class EventMig extends Migration
         Schema::create('event', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
+            $table->longText('desc');
             //event_description
+            $table->string('imagePath');
             $table->date('starting_date');
             $table->date('ending_date');
             $table->time('starting_time');

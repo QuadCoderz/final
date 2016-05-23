@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\custom_emberships;
 use Auth;
+use Illuminate\Http\Request;
 use View;
 
 use App\Http\Requests;
@@ -11,6 +13,7 @@ class addMembershipController extends Controller
 {
     //
 
+    var $type;
 
     public function __construct()
     {
@@ -24,112 +27,118 @@ class addMembershipController extends Controller
         if($ret==null){
             return true;
         }
-        else
+        else {
+
+            $this->type=$ret->type;
+
             return false;
+        }
     }
 
 
 
-    public function premium(){
-        if($this->check()) {
 
-            $mem = new membership();
-            $mem->user_id = Auth::user()->email;
-            $mem->basic_membership = false;
-            $mem->permium_membership = true;
-            $mem->pro_membership = false;
-            $mem->platinum_membership = false;
-            $mem->custom_membership = false;
+
+public function basic($id,Request $request)
+{
+
+
+    if ($this->check()) {
+
+        $mem = new membership();
+        $mem->user_id = Auth::user()->email;
+        if($id==1) {
+            $mem->type = "Basic";
             $mem->save();
+            notify()->flash('Done', 'success', [
+                'text' => 'You have registered in Basic Membership !',
+                'type'=>'success'
+            ]);
+        }
+        if($id==2) {
+            $mem->type = "Premium";
+            $mem->save();
+            notify()->flash('Done', 'success', [
+                'text' => 'You have registered in premium membership !',
+                'type'=>'success'
+            ]);
+        }
+        if($id==3) {
+            $mem->type = "Pro";
+            $mem->save();
+            notify()->flash('Done', 'success', [
+                'text' => 'You have registered in Pro !',
+                'type'=>'success'
+            ]);
+        }
+        if($id==4) {
+            $mem->type = "Platinum";
+            $mem->save();
+            notify()->flash('Done', 'success', [
+                'text' => 'You have registered in Platinum !',
+                'type'=>'success'
+            ]);
+        }
+        if($id==5) {
+            $mem->type = "custom";
+            $mem->save();
+            $custom=new custom_emberships();
+            $custom->membership_id=$mem->id;
+            $f2=$request->feature_2;
+            $f1=$request->feature_1;
+            $f3=$request->feature_3;
+            $f4=$request->feature_4;
 
-            return redirect('home');
+            if($request->feature_1==null){
+                $f1="none";
             }
-        else{
-            echo 'registered';
+            if($request->feature_2==null){
+                $f2="none";
+            } if($request->feature_3==null){
+                $f3="none";
+            } if($request->feature_4==null){
+                $f4="none";
+            }
+            $custom->feature_1=$f1;
+            $custom->feature_2=$f2;
+            $custom->feature_3=$f3;
+            $custom->feature_4=$f4;
+            $custom->save();
+
+            notify()->flash('Done', 'success', [
+                'text' => 'You have registered in custom !',
+                'type'=>'success'
+            ]);
         }
+
     }
-    public function pro()
-    {
-
-        if ($this->check()) {
-
-
-            $mem = new membership();
-            $mem->user_id = Auth::user()->email;
-            $mem->basic_membership = false;
-            $mem->permium_membership = false;
-            $mem->pro_membership = true;
-            $mem->platinum_membership = false;
-            $mem->custom_membership = false;
-            $mem->save();
-            return redirect('home');
-        } else {
-            echo 'registered';
+    else {
+        if($id==1) {
+            notify()->flash('Sorry!', 'success', [
+                'text' => "You are already in $this->type "]);
         }
-    }
-
-
-    public function basic()
-    {
-
-
-        if ($this->check()) {
-
-            $mem = new membership();
-            $mem->user_id = Auth::user()->email;
-            $mem->basic_membership = true;
-            $mem->permium_membership = false;
-            $mem->pro_membership = false;
-            $mem->platinum_membership = false;
-            $mem->custom_membership = false;
-            $mem->save();
-            return redirect('home');
-        } else {
-            echo 'registered';
+        if($id==2) {
+            notify()->flash('Sorry!', 'success', [
+                'text' => "You are already in $this->type "]);
         }
-    }
-
-
-    public function platinum(){
-
-        if($this->check()) {
-
-            $mem = new membership();
-            $mem->user_id = Auth::user()->email;
-            $mem->basic_membership = false;
-            $mem->permium_membership = false;
-            $mem->pro_membership = false;
-            $mem->platinum_membership = true;
-            $mem->custom_membership = false;
-            $mem->save();
-            return redirect('home');
+        if($id==3) {
+            notify()->flash('Sorry!', 'success', [
+                'text' => "You are already in $this->type "]);
+        }
+        if($id==4) {
+            notify()->flash('Sorry!', 'success', [
+                'text' => "You are already in $this->type "]);
+        }
+        if($id==5) {
+            notify()->flash('Sorry!', 'success', [
+                'text' => "You are already in $this->type "]);
         }
 
-        else{
-            echo 'registered';
-        }
+ }
+
+ return redirect('home');
 
 }
-    public function custom(){
-
-        if($this->check()) {
-            $mem = new membership();
-            $mem->user_id = Auth::user()->email;;
-            $mem->basic_membership = false;
-            $mem->permium_membership = false;
-            $mem->pro_membership = false;
-            $mem->platinum_membership = false;
-            $mem->custom_membership = true;
-            $mem->save();
-
-            return redirect('home');
-        }
-        else{
-            echo 'registered';
-        }
-
-  }
-
 
 
 }

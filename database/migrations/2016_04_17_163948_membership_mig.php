@@ -14,14 +14,8 @@ class MembershipMig extends Migration
     {
         Schema::create('memberships', function (Blueprint $table) {
             $table->increments('id');
-
             $table->string('user_id');
-            $table->boolean('basic_membership');
-            $table->boolean('permium_membership');
-            $table->boolean('pro_membership');
-            $table->boolean('platinum_membership');
-            $table->boolean('custom_membership');
-
+            $table->string('type');
             $table->timestamps();
         });
     }

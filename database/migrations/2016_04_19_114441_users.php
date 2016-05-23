@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CustomMembershipMig extends Migration
+class Users extends Migration
 {
     /**
      * Run the migrations.
@@ -12,10 +12,7 @@ class CustomMembershipMig extends Migration
      */
     public function up()
     {
-        Schema::create('custom_membership', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
-        });
+        //
     }
 
     /**
@@ -25,6 +22,6 @@ class CustomMembershipMig extends Migration
      */
     public function down()
     {
-        Schema::drop('custom_membership');
+        //
     }
 }

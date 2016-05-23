@@ -21,6 +21,7 @@ class RoomReservationMig extends Migration
             $table->integer('people_num');
             $table->boolean('projector');
             $table->string('email');
+            $table->boolean('confirm');
             $table->timestamps();
         });
     }

@@ -53,7 +53,7 @@ class AuthController extends Controller
             'mobile' => 'required|digits:11',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
-        ]);
+            ]);
     }
 
     /**
@@ -64,11 +64,14 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
+        notify()->flash('Thank you '. $data['name'],'success',[
+            'text' => 'Enjoy our online services',
+            'type'=>'success']);
         return User::create([
             'name' => $data['name'],
             'mobile' => $data['mobile'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-        ]);
+            ]);
     }
 }

@@ -14,6 +14,13 @@ class CustomMembershipMig extends Migration
     {
         Schema::create('custom_membership', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('membership_id');
+            $table->string('feature_1');
+            $table->string('feature_2');
+            $table->string('feature_3');
+            $table->string('feature_4');
+            $table->boolean('confirm');
+
             $table->timestamps();
         });
     }

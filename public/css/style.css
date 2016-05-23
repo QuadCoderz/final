@@ -100,6 +100,10 @@ a, a:hover, a:active{ outline:0px !important}
  #cssmenu > ul {
         text-align:center;
  }
+ .dropdown, .dropup {
+    position: relative;
+    display: inline-block;
+}
 .dropdown-menu{
 margin-top: 25px;
 }
